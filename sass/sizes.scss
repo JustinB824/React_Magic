@@ -1,0 +1,77 @@
+/* Media Queries
+=============================================*/
+/* Use em-based media queries instead of pixel-based, they are more scalable */
+
+/* Tablets ----------- */
+@media screen and (max-width: 70em){
+    
+}
+
+/* Smaller Tablets and Portrait for them (also large sized phones like the Note) ----------- */
+@media screen and (max-width: 60em){
+    
+}
+
+/* Most mobile phones ----------- */
+@media screen and (max-width: 44em){
+    
+}
+
+
+
+/* If you need very specific media queries, use the following: */
+
+/* Smartphones (landscape) ----------- */
+@media only screen
+and (max-width : 480px)
+and (orientation : landscape) {
+	section#main{
+		/*width: 480px;*/
+	}
+}
+/* Smartphones (portrait) ----------- */
+@media only screen
+and (max-width : 320px)
+and (orientation : portrait) {
+	section#main{
+		/*width: 320px;*/
+	}
+}
+/* iPads (landscape) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+	section#main{
+		/*width: 1024px;*/
+	}
+}
+/* iPads (portrait) ----------- */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+	section#main{
+		/*width: 768px;*/
+	}
+}
+/* Desktops and laptops ----------- */
+@media only screen
+and (min-width : 1224px) {
+	section#main{
+		/*width: 960px;*/
+	}
+}
+/* Large screens ----------- */
+@media only screen
+and (min-width : 1600px) {
+	section#main{
+		/*width: 1600px;*/
+	}
+}
+/* Retina ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio : 1.5) {}

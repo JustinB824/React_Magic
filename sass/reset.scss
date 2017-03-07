@@ -1,0 +1,203 @@
+/* Reset & Normalization
+=============================================*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a,
+abbr, acronym, address, big, cite, code, del,
+dfn, em, img, ins, kbd, q, s, samp, small, strike,
+strong, sub, sup, tt, var, b, u, i, center, dl, dt,
+dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, article,
+aside, canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output, ruby, section,
+summary, time, mark, audio, video{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, dialog{
+	display: block;
+}
+audio, canvas, video{
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+audio:not([controls]){
+	display: none;
+}
+[hidden]{
+	display: none;
+	visibility: hidden;
+}
+
+/* Headings
+=============================================*/
+h1, h2, h3, h4, h5, h6 {
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: normal;
+}
+h1 {
+	font-size: 68px; /* 4.25em */
+	line-height: 74px;
+}
+h2 {
+	font-size: 42px; /* 2.625em */
+	line-height: 46px;
+}
+h3 {
+	font-size: 26px; /* 1.625em */
+	line-height: 30px;
+}
+small {
+	font-size: 10px; /* 0.625em */
+	line-height: 14px;
+}
+/* Preformatted
+=============================================*/
+pre {
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+pre, code, kbd, samp {
+	font: 16px/20px; /* 1em/1.625em */
+}
+/* Tables
+=============================================*/
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+th {
+	text-align: left;
+}
+/* Forms
+=============================================*/
+fieldset {
+	border: 0;
+}
+textarea {
+	overflow: auto;
+	vertical-align: top;
+}
+legend {
+	border: 0;
+	*margin-left: -7px;
+}
+button, input, select, textarea {
+	font: 16px/20px; /* 1em/1.625em */
+	vertical-align: baseline;
+	*vertical-align: middle;
+}
+button, input {
+	line-height: normal;
+	*overflow: visible;
+}
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+	cursor: pointer;
+	-webkit-appearance: button;
+}
+input[type="checkbox"], input[type="radio"] {
+	box-sizing: border-box;
+}
+input[type="search"] {
+	-webkit-appearance: textfield;
+	@include box-sizing(content-box);
+}
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+table button, table input {
+	*overflow: auto;
+}
+/* Quotes
+=============================================*/
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+blockquote, q, cite {
+	font-style: italic;
+}
+blockquote > p {
+	padding: 0;
+}
+/* Lists
+=============================================*/
+ul, ol, li {
+	list-style-position: inside;
+	list-style-type: none;
+	list-style-image: none;
+}
+/* Links
+=============================================*/
+a, a:visited, a:hover, a:active {
+    //color: #0067a2;
+	outline: none;
+	text-decoration: none;
+}
+/* Embedded content
+=============================================*/
+object, video {
+	max-width: 100%;
+}
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+}
+svg:not(:root) {
+	overflow: hidden;
+}
+/* Helpers
+=============================================*/
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-bottom: 1px solid #ddd;
+}
+strong, b, dt, .bold {
+	font-weight: bold;
+}
+dfn, .italic {
+	font-style: italic;
+}
+var, address {
+	font-style: normal;
+}
+sub, sup {
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+sup {
+	top: -8px; /* 0.5em */
+}
+sub {
+	bottom: -4px; /* 0.25em */
+}
+/* Main
+=============================================*/
+html {
+	height: 100%;
+	font-size: 100%;
+	text-rendering: optimizeLegibility !important;
+	-webkit-font-smoothing: antialiased !important;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+body {
+    
+}
+
+

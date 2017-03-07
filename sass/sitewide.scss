@@ -1,0 +1,18 @@
+@import "variables.scss"; // Include all variables for the site like fonts
+@import "mixins.scss"; // Include the CSS mixins
+@import "reset.scss"; // Include the general HTML reset
+
+/* Put all your main styles below here */
+
+
+
+
+
+
+
+
+@import "sizes.scss"; // Your media queries should be listed after all main styles.
+
+* {
+    @include box-sizing(border-box); // This removes padding from adding to the full width of an object
+}
