@@ -67,6 +67,7 @@ var data = [
 
 var Excel = React.createClass({
 	displayName: 'Excel',
+	_presSearchData: null,
 
 	getInitialState: function() {
 		return {
@@ -74,6 +75,7 @@ var Excel = React.createClass({
 			sortby: null,
 			descending: false,
 			edit: null,
+			search: false,
 		};
 	},
 
@@ -118,7 +120,94 @@ var Excel = React.createClass({
 		});
 	},
 
-	render: function() {
+	_toggleSearch: function() {
+		if (this.state.search) {
+			this.setState({
+				data: this._presSearchData,
+				search: false,
+			});
+			this._presSearchData = null;
+		} else {
+			this._presSearchData = this.state.data;
+			this.setState({
+				search: true,
+			});
+		}
+	},
+
+	_renderSearch: function() {
+		if (!this.state.search) {
+			return null;
+		}
+		return (
+			React.DOM.tr(
+				{onChange: this._search},
+				this.props.headers.map(function(_ignore, idx) {
+					return React.DOM.td({key: idx},
+						React.DOM.input({
+							type: 'text',
+							'data-idx': idx,
+						})
+					);
+				})
+			)
+		);
+	},
+
+	_search: function(e) {
+		var needle = e.target.value.toLowerCase();
+		if (!needle) {
+			this.setState({
+				data: this._presSearchData
+			});
+			return;
+		}
+		var idx = e.target.dataset.idx;
+		var searchData = this._presSearchData.filter(function(row) {
+			return row[idx].toString().toLowerCase().indexOf(needle) > -1;
+		});
+		this.setState({
+			data: searchData
+		});
+	},
+
+	_download: function(format, ev) {
+		var contents = format === 'json'
+			? JSON.stringify(this.state.data)
+			: this.state.data.reduce(function(result, row) {
+				return result
+				+ row.reduce(function(rowresult, cell, idx) {
+					return rowresult
+					+ '"'
+					+ cell.replace(/"/g, '""')
+					+ '"'
+					+ (idx < row.length - 1 ? ',' : '');
+				}, '')
+				+ "\n";
+			}, '');
+		var URL = window.URL || window.webkitURL;
+		var blob = new Blob([contents], {type: 'text/' + format});
+		ev.target.href = URL.createObjectURL(blob);
+		ev.target.download = 'data.' + format;
+	},
+
+	_renderToolbar: function() {
+		return React.DOM.div({className: 'toolbar'},
+			React.DOM.button({
+				onClick: this._toggleSearch,
+			},'Search'),
+			React.DOM.a({
+				onClick: this._download.bind(this, 'json'),
+				href: 'data.json'
+			}, 'Export JSON'),
+			React.DOM.a({
+				onClick: this._download.bind(this, 'csv'),
+				href: 'data.csv'
+			}, 'Export CSV')
+		);
+	},
+
+	_renderTable: function() {
 		return (
 			React.DOM.table(null,
 				React.DOM.thead({onClick: this._sort},
@@ -132,6 +221,7 @@ var Excel = React.createClass({
 					)
 				),
 				React.DOM.tbody({onDoubleClick: this._showEditor},
+					this._renderSearch(),
 					this.state.data.map(function(row, rowidx) {
 						return (
 							React.DOM.tr({key: rowidx},
@@ -157,6 +247,15 @@ var Excel = React.createClass({
 						)
 					}, this)
 				)
+			)
+		);
+	},
+
+	render: function() {
+		return (
+			React.DOM.div(null,
+				this._renderToolbar(),
+				this._renderTable()
 			)
 		);
 	}
